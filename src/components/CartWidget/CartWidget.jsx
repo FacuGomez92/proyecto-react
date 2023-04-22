@@ -1,10 +1,16 @@
-import React from "react";
-import { BsFillCartPlusFill } from 'react-icons/bs';
+import React, { useContext } from 'react'
+import { FaShoppingCart } from "react-icons/fa";
+import './CartWidget.css'
+import {CartContext} from '../context/CartContext'
 
-class CartWidget extends React.Component {
-    render() {
-        return <h1><BsFillCartPlusFill/></h1>
-};
+export const CartWidget = () => {
+
+  const {calcularCantidad} = useContext(CartContext)
+
+  return (
+    <>
+    <FaShoppingCart className="carrito"/>
+    <span>{calcularCantidad()}</span>
+    </>
+  )
 }
-
-export default CartWidget;

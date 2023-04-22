@@ -1,10 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import {ImSpinner3} from 'react-icons/im'
+import { pedirProductos } from '../../helpers/pedirProductos';
+import { ItemList } from '../ItemList/ItemList';
+import './itemlistcontainer.css';
+import { useParams } from 'react-router-dom';
 
-const ItemListContainer = () => {
+export const ItemListContainer = ({greating}) => {
+  const [items, setItems] = useState([])
+  const [loading, setLoading] = useState(false)
+  const {categoryId} = useParams()
+
+  useEffect(() =>{
+    setLoading(true)
+    pedirProductos()
+      .then((res) =>{
+        if(categoryId){
+          setItems(res.filter(prod => prod.category === categoryId)  )
+        }else{
+          setItems(res)
+        }
+      })
+        .catch((error) => console.log(error))
+      .finally(() =>{setLoading(false)})
+  }, [categoryId])
+
   return (
-    <div>
-    </div>
-  );
-}
-
-export default ItemListContainer;
+    <>
+      {
+        loading
+        ?<div className='spinner'><ImSpinner3/></div>
+        : <ItemList productos={items}/>
+      }
+    </>
+  )}
