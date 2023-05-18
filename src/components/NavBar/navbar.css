@@ -1,7 +1,7 @@
 .menu{
     display: flex;
     justify-content: space-around;
-    background-color: brown;
+    background-color: rgb(102, 96, 96);
     color: aliceblue;
     padding-top: 5px;
 }
@@ -11,5 +11,5 @@
     font-weight: 900;
 }
 .link:hover{
-    color: gold;
+    color: rgb(86, 169, 202);
 }

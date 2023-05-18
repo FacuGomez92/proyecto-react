@@ -1,6 +1,7 @@
 import './ItemCount.css'
 
 export const ItemCount = ({max, cantidad, modify}) =>{
+
     const sumar = () =>{
         if (cantidad < max){
             modify(cantidad +1)
@@ -11,7 +12,9 @@ export const ItemCount = ({max, cantidad, modify}) =>{
             modify(cantidad-1)
         }
     }
-      return(
+    
+
+    return(
         <>
         <h4>{cantidad}</h4>
         <div>
